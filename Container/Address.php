@@ -36,6 +36,9 @@ class Address extends Nette\Object
     /** @var string */
     private $castObce;
 
+    /** @var string */
+    private $mestskaCast;
+
     /** @var int */
     private $psc;
 
@@ -46,6 +49,14 @@ class Address extends Nette\Object
     public function getCastObce()
     {
         return $this->castObce;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMestskaCast()
+    {
+        return $this->mestskaCast;
     }
 
     /**

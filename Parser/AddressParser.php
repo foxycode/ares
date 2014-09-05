@@ -73,6 +73,7 @@ class AddressParser implements ParserInterface
             'dic'             => (string) $el->DIC,
             'ico'             => (string) $el->ICO,
             'mesto'           => (string) $el->AA->N,
+            'mestskaCast'     => (string) $el->AA->NMC,
             'castObce'        => (string) $el->AA->NCO,
             'ulice'           => (string) $el->AA->NU,
             'cisloOrientacni' => (string) $el->AA->CO,
