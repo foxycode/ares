@@ -1,8 +1,10 @@
 <?php
 
 namespace Edge\Ares\Provider;
+
 use Edge\Ares\Decorator\CurlDecoratorInterface;
 use Edge\Ares\Exception\HttpException;
+
 
 /**
  * @author Marek Makovec <marek.makovec@edgedesign.cz>
@@ -16,11 +18,11 @@ class HttpProvider implements ProviderInterface
      */
     private $decorator;
 
+
     public function __construct(CurlDecoratorInterface $decorator = null)
     {
         $this->decorator = $decorator;
     }
-
 
     /**
      * Fetch XML describing subject with given ID.
@@ -64,4 +66,5 @@ class HttpProvider implements ProviderInterface
     {
         return sprintf(self::ARES_API_URL, $ic);
     }
+
 }

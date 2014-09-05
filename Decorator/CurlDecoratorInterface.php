@@ -2,6 +2,7 @@
 
 namespace Edge\Ares\Decorator;
 
+
 /**
  * Interface CurlDecoratorInterface
  * @author Marek Makovec <marek.makovec@edgedesign.cz>
@@ -14,4 +15,5 @@ interface CurlDecoratorInterface
      * @param resource $resource
      */
     public function decorate($resource);
-} 
+
+}

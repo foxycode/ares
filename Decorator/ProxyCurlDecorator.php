@@ -2,6 +2,7 @@
 
 namespace Edge\Ares\Decorator;
 
+
 /**
  * Class ProxyCurlDecorator
  *
@@ -9,7 +10,6 @@ namespace Edge\Ares\Decorator;
  */
 class ProxyCurlDecorator implements CurlDecoratorInterface
 {
-
     private $proxyHost;
 
     private $proxyPort;
@@ -63,4 +63,5 @@ class ProxyCurlDecorator implements CurlDecoratorInterface
             );
         }
     }
+
 }
