@@ -2,12 +2,15 @@
 
 namespace Edge\Ares\Container;
 
+use Nette;
+
+
 /**
- * Class AddressContainer
+ * Class Address
  *
  * @author Marek Makovec <marek.makovec@edgedesign.cz>
  */
-class Address
+class Address extends Nette\Object
 {
     /** @var int */
     private $ico;
@@ -36,18 +39,6 @@ class Address
     /** @var int */
     private $psc;
 
-    public function __construct($castObce, $cisloOrientacni, $cisloPopisne, $dic, $firma, $ico, $mesto, $psc, $ulice)
-    {
-        $this->castObce = $castObce;
-        $this->cisloOrientacni = $cisloOrientacni;
-        $this->cisloPopisne = $cisloPopisne;
-        $this->dic = $dic;
-        $this->firma = $firma;
-        $this->ico = $ico;
-        $this->mesto = $mesto;
-        $this->psc = $psc;
-        $this->ulice = $ulice;
-    }
 
     /**
      * @return string
@@ -120,4 +111,23 @@ class Address
     {
         return $this->ulice;
     }
+
+    /**
+     * @param  array to wrap
+     * @param  bool
+     * @return Address
+     */
+    public static function from($arr, $recursive = TRUE)
+    {
+        $obj = new static;
+        foreach ($arr as $key => $value) {
+            if ($recursive && is_array($value)) {
+                $obj->$key = static::from($value, TRUE);
+            } else {
+                $obj->$key = $value;
+            }
+        }
+        return $obj;
+    }
+
 }

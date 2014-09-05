@@ -68,17 +68,17 @@ class AddressParser implements ParserInterface
         $data = $xml->children($ns['are']);
         $el = $data->children($ns['D'])->VBAS;
 
-        $ico 	 = (string) $el->ICO;
-        $dic 	 = (string) $el->DIC;
-        $firma = (string) $el->OF;
-        $ulice = (string) $el->AA->NU;
-        $cori  = (string) $el->AA->CO;
-        $cpop  = (string) $el->AA->CD;
-        $mesto = (string) $el->AA->N;
-        $cast  = (string) $el->AA->NCO;
-        $psc	 = (string) $el->AA->PSC;
-
-        return new Address($cast, $cori, $cpop, $dic, $firma, $ico, $mesto, $psc, $ulice);
+        return new Address::from(array(
+            'firma'           => (string) $el->OF,
+            'dic'             => (string) $el->DIC,
+            'ico'             => (string) $el->ICO,
+            'mesto'           => (string) $el->AA->N,
+            'castObce'        => (string) $el->AA->NCO,
+            'ulice'           => (string) $el->AA->NU,
+            'cisloOrientacni' => (string) $el->AA->CO,
+            'cisloPopisne'    => (string) $el->AA->CD,
+            'psc'             => (string) $el->AA->PSC
+        ));
     }
 
     private function assertSubjectFound(SimpleXMLElement $xml)
@@ -94,4 +94,5 @@ class AddressParser implements ParserInterface
             throw new AresException('Error occured in ARES.cz system.', $message, $code);
         }
     }
+
 }
